@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="ica_book_shop_root" name="Book Shop" sequence="0">
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="ica_books_categ" name="Books" action="ica_book_shop.ica_books_action"/>
+    </menuitem>
+</odoo>
