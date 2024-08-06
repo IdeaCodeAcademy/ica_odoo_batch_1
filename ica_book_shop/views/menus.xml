@@ -4,5 +4,10 @@
     <menuitem id="ica_book_shop_root" name="Book Shop" sequence="0">
         <!-- This Menu Item must have a parent and an action -->
         <menuitem id="ica_books_categ" name="Books" action="ica_book_shop.ica_books_action"/>
+        <menuitem id="configuration_categ" name="Configuration">
+            <!-- This Menu Item must have a parent and an action -->
+            <menuitem id="ica_book_category" name="Categories" action="ica_book_shop.ica_book_category_action" sequence="0"/>
+            <menuitem id="contacts_category" name="Contacts" action="contacts.action_contacts" sequence="1"/>
+        </menuitem>
     </menuitem>
 </odoo>
