@@ -27,20 +27,29 @@
         <field name="arch" type="xml">
             <form string="ica_books_form">
                 <header>
-                    <field name="state" widget="statusbar" options="{'clickable': '1'}"
+                    <button name="action_draft" string="Rest to Draft" type="object" invisible="state != 'cancel'"/>
+                    <button name="action_available" string="Make Available" class="btn btn-primary" type="object" invisible="state != 'draft'"/>
+                    <button name="action_no_available" string="Not Available" class="btn btn-warning" type="object" invisible="state != 'available'"/>
+                    <button name="action_cancel" string="Cancel" class="btn btn-danger" type="object" invisible="state not in ['available','no_available']"/>
+                    <field name="state" widget="statusbar"
                            statusbar_visible="draft,available,no_available,cancel"/>
                 </header>
                 <sheet>
                     <field name="cover" widget="image" class="oe_avatar"/>
                     <group>
                         <group string="Book Information">
-                            <field name="name"/>
-                            <field name="release_year"/>
-                            <field name="category_ids" widget="many2many_tags"/>
+                            <field name="name" readonly="state != 'draft'"/>
+                            <field name="release_year" readonly="state != 'draft'"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="sale_price" readonly="state != 'draft'"/>
+                            <field name="category_ids" widget="many2many_tags" readonly="state != 'draft'"/>
                         </group>
                         <group string="Author Information">
-                            <field name="partner_id"/>
-
+                            <field name="image_1920" widget="image"/>
+                            <field name="partner_id" readonly="state != 'draft'"/>
+                            <field name="mobile"/>
+                            <field name="email" widget="email"/>
                         </group>
                     </group>
                 </sheet>
