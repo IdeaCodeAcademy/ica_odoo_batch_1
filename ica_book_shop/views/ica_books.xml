@@ -5,12 +5,14 @@
         <field name="model">ica.books</field>
         <field name="arch" type="xml">
             <tree string="ica_books_tree" decoration-warning="state == 'no_available'"
-                       decoration-success="state == 'available'"
-                       decoration-danger="state == 'cancel'"
-                       decoration-info="state == 'draft'">
+                  decoration-success="state == 'available'"
+                  decoration-danger="state == 'cancel'"
+                  decoration-info="state == 'draft'">
                 <field name="name"/>
                 <field name="partner_id" optional="show"/>
-                <field name="release_year" optional="show"/>
+                <field name="release_year" optional="hide"/>
+                <field name="sale_price" optional="show" sum="Total Sale Price"/>
+                <field name="currency_id" optional="hide"/>
                 <field name="category_ids" widget="many2many_tags" optional="hide"/>
                 <field name="state" widget="badge" optional="show"
                        decoration-warning="state == 'no_available'"
@@ -28,13 +30,20 @@
             <form string="ica_books_form">
                 <header>
                     <button name="action_draft" string="Rest to Draft" type="object" invisible="state != 'cancel'"/>
-                    <button name="action_available" string="Make Available" class="btn btn-primary" type="object" invisible="state != 'draft'"/>
-                    <button name="action_no_available" string="Not Available" class="btn btn-warning" type="object" invisible="state != 'available'"/>
-                    <button name="action_cancel" string="Cancel" class="btn btn-danger" type="object" invisible="state not in ['available','no_available']"/>
+                    <button name="action_available" string="Make Available" class="btn btn-primary" type="object"
+                            invisible="state != 'draft'"/>
+                    <button name="action_no_available" string="Not Available" class="btn btn-warning" type="object"
+                            invisible="state != 'available'"/>
+                    <button name="action_cancel" string="Cancel" class="btn btn-danger" type="object"
+                            invisible="state not in ['available','no_available']"/>
                     <field name="state" widget="statusbar"
                            statusbar_visible="draft,available,no_available,cancel"/>
                 </header>
                 <sheet>
+                    <widget name="web_ribbon" title="Available" bg_color="text-bg-success"
+                            invisible="state != 'available'"/>
+                    <widget name="web_ribbon" title="No Available" bg_color="text-bg-danger"
+                            invisible="state != 'no_available'"/>
                     <field name="cover" widget="image" class="oe_avatar"/>
                     <group>
                         <group string="Book Information">
@@ -56,10 +65,38 @@
             </form>
         </field>
     </record>
+
+    <record id="ica_books_view_search" model="ir.ui.view">
+        <field name="name">ica_books_view_search</field>
+        <field name="model">ica.books</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="sale_price"/>
+                <field name="release_year"/>
+                <filter string="Archived" name="filter_archived"
+                        domain="[('active','=',False)]"/>
+                <filter string="Unarchived" name="filter_unarchived"
+                        domain="[('active','=',True)]"/>
+                <filter string="Available" name="filter_available"
+                        domain="[('state','=','available')]"/>
+                <filter string="No Available" name="filter_no_available"
+                        domain="[('state','=','no_available')]"/>
+                <group>
+                    <filter string="Author" name="group_by_author"
+                            context="{'group_by': 'partner_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="ica_books_action" model="ir.actions.act_window">
         <field name="name">Books</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">ica.books</field>
         <field name="view_mode">tree,form</field>
+<!--        <field name="domain">[(1,'=',1)]</field>-->
+        <field name="context">{'search_default_filter_available':1,'search_default_group_by_author':1}</field>
     </record>
 </odoo>

@@ -6,11 +6,8 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <!--            <field name="category_id" position="replace">-->
-            <!--                <field name="books_ids"/>-->
-            <!--            </field>-->
             <notebook position="inside">
-                <page name="Books">
+                <page name="Books" invisible="not books_ids">
                     <field name="books_ids">
                         <tree create="0" delete="0">
                             <field name="cover" widget="image"/>
@@ -19,22 +16,40 @@
                             <field name="state"/>
                             <field name="category_ids" optional="hide"/>
                         </tree>
-                        <form>
+                        <form create="0" delete="0" edit="0">
                             <header>
                                 <field name="state" widget="statusbar"/>
                             </header>
                             <sheet>
                                 <group>
-                                    <field name="name" readonly="1"/>
+                                    <field name="cover" widget="image" readonly="1"/>
+                                    <field name="name"/>
+                                    <field name="release_year"/>
+                                    <field name="state"/>
+                                    <field name="category_ids" widget="many2many_tags"/>
                                 </group>
                             </sheet>
-                            <footer>
-                                <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
-                            </footer>
+                            <!--                            <footer>-->
+                            <!--                                <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>-->
+                            <!--                            </footer>-->
                         </form>
                     </field>
                 </page>
             </notebook>
+
+<!--            <sheet position="inside">-->
+                <div class="oe_button_box" name="button_box" position="inside">
+                    <button name="action_books" type="object"
+                            class="oe_stat_button" icon="fa-book">
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">
+                                Books
+                            </span>
+                            <field name="book_count" class="o_stat_value"/>
+                        </div>
+                    </button>
+                </div>
+<!--            </sheet>-->
 
         </field>
     </record>

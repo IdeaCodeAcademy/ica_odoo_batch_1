@@ -5,8 +5,8 @@ class IcaBooks(models.Model):
     _name = 'ica.books'
     _description = 'IcaBooks'
 
-    name = fields.Char(required=True)
-    release_year = fields.Integer()
+    name = fields.Char(required=True,copy=True)
+    release_year = fields.Integer(copy=False)
     cover = fields.Binary()
     partner_id = fields.Many2one('res.partner', string="Author", required=True)
     mobile = fields.Char(related="partner_id.mobile",readonly=True)
@@ -24,7 +24,8 @@ class IcaBooks(models.Model):
 
     company_id = fields.Many2one('res.company', string="Company", default=lambda self: self.env.company)
     currency_id = fields.Many2one('res.currency', string="Currency", related='company_id.currency_id')
-    sale_price = fields.Monetary(string="Sale Price")
+    sale_price = fields.Monetary(string="Sale Price",copy=False)
+    active = fields.Boolean(default=True)
 
     def action_draft(self):
         self.state = 'draft'
