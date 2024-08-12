@@ -61,6 +61,17 @@
                             <field name="email" widget="email"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page name="Download Links">
+                            <field name="download_link_ids" readonly="state == 'available'">
+                                <tree editable="top">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="download_link" widget="url"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -96,7 +107,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">ica.books</field>
         <field name="view_mode">tree,form</field>
-<!--        <field name="domain">[(1,'=',1)]</field>-->
-        <field name="context">{'search_default_filter_available':1,'search_default_group_by_author':1}</field>
+        <!--        <field name="domain">[(1,'=',1)]</field>-->
+        <field name="context">{'search_default_filter_available': 1, 'search_default_group_by_author': 1}</field>
     </record>
 </odoo>
