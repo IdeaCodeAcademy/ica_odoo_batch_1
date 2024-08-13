@@ -2,3 +2,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ica_books,ica.books,model_ica_books,,1,1,1,1
 access_ica_book_category,ica.book.category,model_ica_book_category,,1,1,1,1
 access_ica_books_download_link_line,ica.books.download.link.line,model_ica_books_download_link_line,,1,1,1,1
+access_ica_books_order,ica.books.order,model_ica_books_order,,1,1,1,1
+access_ica_books_order_line,ica.books.order.line,model_ica_books_order_line,,1,1,1,1
+access_book_order_wizard,book.order.wizard,model_book_order_wizard,,1,1,1,1
+access_books_order_wizard_line,books.order.wizard.line,model_books_order_wizard_line,,1,1,1,1
