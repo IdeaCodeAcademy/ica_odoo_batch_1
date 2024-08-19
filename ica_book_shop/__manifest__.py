@@ -4,6 +4,8 @@
     "license": "LGPL-3",
     "depends": ["base", "web", "contacts"],
     "data": [
+        "data/sequence.xml",
+        "security/groups.xml",
         "security/ir.model.access.csv",
         "views/ica_books_order.xml",
 

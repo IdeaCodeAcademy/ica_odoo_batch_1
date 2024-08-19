@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
-    <menuitem id="ica_book_shop_root" name="Book Shop" sequence="0">
+    <menuitem id="ica_book_shop_root" name="Book Shop" sequence="0" groups="ica_book_shop.group_employee">
         <!-- This Menu Item must have a parent and an action -->
         <menuitem id="ica_books_categ" name="Books" action="ica_book_shop.ica_books_action" sequence="0"/>
         <menuitem id="ica_books_order_categ" name="Orders" action="ica_book_shop.ica_books_order_action" sequence="1"/>
-        <menuitem id="configuration_categ" name="Configuration" sequence="2">
+        <menuitem id="configuration_categ" name="Configuration" sequence="2" groups="ica_book_shop.group_manager">
             <!-- This Menu Item must have a parent and an action -->
             <menuitem id="ica_book_category" name="Categories" action="ica_book_shop.ica_book_category_action"
                       sequence="0"/>
@@ -13,6 +13,7 @@
         </menuitem>
         <!-- This Menu Item must have a parent and an action -->
         <menuitem id="book_order_wizard_categ" name="Book Order Wizard"
+                  groups="ica_book_shop.group_admin"
                   action="ica_book_shop.book_order_wizard_action"/>
     </menuitem>
 </odoo>

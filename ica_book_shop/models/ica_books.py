@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from odoo.tests.common import Form, tagged, users
 
 
 class IcaBooks(models.Model):
@@ -27,6 +28,7 @@ class IcaBooks(models.Model):
     sale_price = fields.Monetary(string="Sale Price", copy=False)
     active = fields.Boolean(default=True)
     download_link_ids = fields.One2many('ica.books.download.link.line', 'book_id')
+    line_ids = fields.One2many('ica.books.order.line', 'book_id')
 
     def action_draft(self):
         self.state = 'draft'
@@ -44,7 +46,7 @@ class IcaBooks(models.Model):
             #     "download_link": "https://localhost:8069/books"
             # })
         ]
-        print("*"*10)
+        print("*" * 10)
         print(data)
         self.write({
             "download_link_ids": data
@@ -58,6 +60,27 @@ class IcaBooks(models.Model):
 
     def action_cancel(self):
         self.state = 'cancel'
+
+    def action_book_order(self):
+        wizard = self.env['book.order.wizard'].create({
+            "partner_id": self.env.user.partner_id.id,
+            "line_ids": [
+                (0, 0, {
+                    "book_id": self.id,
+                })
+            ]
+
+        })
+        wizard.line_ids._onchange_sale_price()
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "book.order.wizard",
+            "res_id": wizard.id,
+            "view_mode": "form",
+            "target": "new",
+        }
+        # Form
+        # ...
 
 
 class BookDownloadLink(models.Model):

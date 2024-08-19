@@ -7,6 +7,7 @@
             <form string="ica_books_order_form">
                 <sheet>
                     <group>
+                        <field name="name"/>
                         <field name="partner_id"/>
                     </group>
                     <field name="line_ids">
