@@ -34,26 +34,26 @@ class IcaBooks(models.Model):
         self.state = 'draft'
 
     def action_available(self):
-        data = [
-            (1, self.download_link_ids[1].id, {
-                # "book_id": self.id,
-                "name": "Google MM",
-                # "download_link": "https://localhost:8069/books"
-            }),
-            # (0, 0, {
-            #     # "book_id": self.id,
-            #     "name": "Mega",
-            #     "download_link": "https://localhost:8069/books"
-            # })
-        ]
-        print("*" * 10)
-        print(data)
-        self.write({
-            "download_link_ids": data
-        })
+        # data = [
+        #     (1, self.download_link_ids[1].id, {
+        #         # "book_id": self.id,
+        #         "name": "Google MM",
+        #         # "download_link": "https://localhost:8069/books"
+        #     }),
+        #     # (0, 0, {
+        #     #     # "book_id": self.id,
+        #     #     "name": "Mega",
+        #     #     "download_link": "https://localhost:8069/books"
+        #     # })
+        # ]
+        # print("*" * 10)
+        # print(data)
+        # self.write({
+        #     "download_link_ids": data
+        # })
         # self.download_link_ids.unlink()
         # self.download_link_ids.create(data)
-        # self.state = 'available'
+        self.state = 'available'
 
     def action_no_available(self):
         self.state = 'no_available'

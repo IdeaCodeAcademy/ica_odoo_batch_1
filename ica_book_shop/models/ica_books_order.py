@@ -7,7 +7,7 @@ class IcaBooksOrder(models.Model):
     _rec_name = 'partner_id'
     _order = "id desc"
 
-    name = fields.Char(string='Name', default=lambda self: _('New'), readonly=True)
+    name = fields.Char(string='Sequence', default=lambda self: _('New'), readonly=True,copy=False)
     partner_id = fields.Many2one('res.partner', string='Customer')
     line_ids = fields.One2many('ica.books.order.line', 'order_id')
 

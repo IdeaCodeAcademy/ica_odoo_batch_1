@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
+    <record id="ica_book_view_form" model="ir.ui.view">
+        <field name="name">ica_book_view_form</field>
+        <field name="model">ica.book.category</field>
+        <field name="arch" type="xml">
+            <hierarchy child_field="child_ids" icon="fa-users" draggable="1">
+                <field name="image"/>
+                <templates>
+                    <t t-name="hierarchy-box">
+                        <div t-attf-class="o_hierarchy_node_header d-flex justify-content-center pb-4">
+                            <!--                            <field name="parent_id"/>-->
+<!--                            <t t-if="record.image">-->
+<!--                                <field name="image" widget="image"/>-->
+<!--                            </t>-->
+                        </div>
+                        <div class="o_hierarchy_node_body d-flex flex-column text-center">
+                            <field name="image" widget="image"/>
+                            <div class="w-100 position-relative">
+                                <field class="fw-bold" name="name"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </hierarchy>
+        </field>
+    </record>
+
     <record id="ica_book_category_view_tree" model="ir.ui.view">
         <field name="name">ica_book_category_view_tree</field>
         <field name="model">ica.book.category</field>
@@ -8,7 +34,10 @@
             <tree string="ica_book_category_tree" editable="top">
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
-                <field name="parent_category_id"/>
+                <field name="image" widget="image"/>
+                <field name="parent_id"/>
+                <field name="child_ids" widget="many2many_tags"/>
+                <field name="parent_path"/>
             </tree>
         </field>
     </record>
@@ -17,6 +46,6 @@
         <field name="name">Categories</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">ica.book.category</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,hierarchy</field>
     </record>
 </odoo>
