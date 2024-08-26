@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.rule" id="ica_book_shop.employee_rule">
+        <field name="name">ICA : Employee Rules</field>
+        <field name="model_id" ref="ica_book_shop.model_ica_books"/>
+        <field name="domain_force">[('state', '=', 'available')]</field>
+        <field name="perm_create" eval="False"/>
+<!--        <field name="perm_unlink" eval="False"/>-->
+<!--        <field name="perm_read" eval="False"/>-->
+<!--        <field name="perm_write" eval="False"/>-->
+        <field name="groups" eval="[(4, ref('ica_book_shop.group_employee'))]"/>
+    </record>
+
+    <record model="ir.rule" id="ica_book_shop.manager_rule">
+        <field name="name">ICA : Manager Rules</field>
+        <field name="model_id" ref="ica_book_shop.model_ica_books"/>
+        <field name="domain_force">[('state', 'in', ['available', 'no_available'])]</field>
+        <field name="groups" eval="[(4, ref('ica_book_shop.group_manager'))]"/>
+    </record>
+
+    <record model="ir.rule" id="ica_book_shop.admin_rule">
+        <field name="name">ICA : Admin Rules</field>
+        <field name="model_id" ref="ica_book_shop.model_ica_books"/>
+        <field name="domain_force">[(1, '=',1)]</field>
+        <field name="groups" eval="[(4, ref('ica_book_shop.group_admin'))]"/>
+    </record>
+</odoo>

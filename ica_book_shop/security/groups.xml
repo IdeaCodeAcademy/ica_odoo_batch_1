@@ -23,6 +23,5 @@
             <field name="category_id" ref="ica_book_shop.ica_book_shop"/>
             <field name="implied_ids" eval="[(4, ref('ica_book_shop.group_manager'))]"/>
         </record>
-
     </data>
 </odoo>

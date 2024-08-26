@@ -8,6 +8,7 @@
         "data/server_action.xml",
 
         "security/groups.xml",
+        "security/ir_rule.xml",
         "security/ir.model.access.csv",
         "views/ica_books_order.xml",
 
