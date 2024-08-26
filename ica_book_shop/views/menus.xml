@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <record id="action_ica_bookshop" model="ir.actions.act_url">
+        <field name="name">ICA Standalone</field>
+        <field name="url">/ica_book_shop/standalone_app</field>
+        <field name="target">self</field>
+    </record>
+
     <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
     <menuitem id="ica_book_shop_root" name="Book Shop" sequence="0" groups="ica_book_shop.group_employee">
         <!-- This Menu Item must have a parent and an action -->
@@ -19,5 +25,6 @@
                   action="ica_book_shop.book_order_wizard_action"/>
         <!-- This Menu Item must have a parent and an action -->
         <menuitem id="kiosk_category" name="KIOSK Mode" action="ica_book_client_action"/>
+        <menuitem id="ica_bookshop_category" name="Standalone" action="action_ica_bookshop"/>
     </menuitem>
 </odoo>
