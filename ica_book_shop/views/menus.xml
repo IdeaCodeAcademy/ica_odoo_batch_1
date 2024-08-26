@@ -7,9 +7,11 @@
         <menuitem id="ica_books_order_categ" name="Orders" action="ica_book_shop.ica_books_order_action" sequence="1"/>
         <menuitem id="configuration_categ" name="Configuration" sequence="2" groups="ica_book_shop.group_manager">
             <!-- This Menu Item must have a parent and an action -->
+            <menuitem id="settings_category" name="Settings" action="ica_book_shop.action_ica_movie_settings_configuration" sequence="0"/>
+            <!-- This Menu Item must have a parent and an action -->
             <menuitem id="ica_book_category" name="Categories" action="ica_book_shop.ica_book_category_action"
-                      sequence="0"/>
-            <menuitem id="contacts_category" name="Contacts" action="contacts.action_contacts" sequence="1"/>
+                      sequence="1"/>
+            <menuitem id="contacts_category" name="Contacts" action="contacts.action_contacts" sequence="2"/>
         </menuitem>
         <!-- This Menu Item must have a parent and an action -->
         <menuitem id="book_order_wizard_categ" name="Book Order Wizard"

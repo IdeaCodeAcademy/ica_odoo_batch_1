@@ -91,3 +91,9 @@ class BookDownloadLink(models.Model):
     download_link = fields.Char()
     book_id = fields.Many2one('ica.books', string="Book")
     sequence = fields.Integer()
+
+    def action_click_setting(self):
+        ica_book_shop_boolean = self.env['ir.config_parameter'].sudo().get_param('ica_book_shop.ica_book_shop_boolean')
+        ica_book_shop_char = self.env['ir.config_parameter'].sudo().get_param('ica_book_shop.ica_book_shop_char')
+        print(ica_book_shop_boolean,ica_book_shop_char)
+        print(self.env.company.ica_book_admin)

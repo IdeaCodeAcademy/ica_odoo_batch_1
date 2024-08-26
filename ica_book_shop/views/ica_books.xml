@@ -112,6 +112,7 @@
                                     <field name="sequence" widget="handle"/>
                                     <field name="name"/>
                                     <field name="download_link" widget="url"/>
+                                    <button name="action_click_setting" type="object" class="btn btn-outline-danger" string="Click"/>
                                 </tree>
                             </field>
                         </page>

@@ -17,6 +17,7 @@
         "views/ica_books.xml",
 
         "wizard/book_order_wizard.xml",
+        "views/res_config_settings.xml",
 
 
         "views/menus.xml",
