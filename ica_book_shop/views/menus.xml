@@ -17,5 +17,7 @@
         <menuitem id="book_order_wizard_categ" name="Book Order Wizard"
                   groups="ica_book_shop.group_admin"
                   action="ica_book_shop.book_order_wizard_action"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="kiosk_category" name="KIOSK Mode" action="ica_book_client_action"/>
     </menuitem>
 </odoo>

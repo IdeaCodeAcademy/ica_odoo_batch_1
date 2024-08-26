@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.actions.client" id="ica_book_client_action">
+        <field name="name">My Client Action</field>
+        <field name="tag">ica_bookshop.IcaBookShop</field>
+    </record>
+</odoo>

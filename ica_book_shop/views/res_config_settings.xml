@@ -15,8 +15,8 @@
                         <setting>
                             <field name="ica_book_shop_char"/>
                         </setting><setting>
-                            <field name="ica_book_admin"/>
-                        </setting>
+                        <field name="ica_book_admin"/>
+                    </setting>
                     </block>
                 </app>
             </xpath>
@@ -24,10 +24,10 @@
     </record>
 
     <record id="action_ica_movie_settings_configuration" model="ir.actions.act_window">
-            <field name="name">Settings</field>
-            <field name="res_model">res.config.settings</field>
-            <field name="view_mode">form</field>
-            <field name="target">inline</field>
-            <field name="context">{'module' : 'ica_book_shop', 'bin_size': False}</field>
-        </record>
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'ica_book_shop', 'bin_size': False}</field>
+    </record>
 </odoo>
