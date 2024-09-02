@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_ica_books">
+        <t t-foreach="docs" t-as="record">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>
+                            <span t-field="record.name"/>
+                        </h2>
+                        <table class="table">
+                            <thead class="text-dark">
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Sale Price</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-dark">
+                                <t t-foreach="record.line_ids" t-as="line">
+                                    <tr>
+                                        <td><t t-esc="line.partner_id.name"/></td>
+                                        <td><t t-esc="line.sale_price"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div class="footer">
+                            <h1>Hello Footer <t t-esc="record.action_download_report()"/></h1>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_ica_books" model="ir.actions.report">
+        <field name="name">Books</field>
+        <field name="model">ica.books</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ica_book_shop.report_ica_books</field>
+        <field name="report_file">ica_book_shop.report_ica_books</field>
+        <field name="print_report_name">'Books - %s' % object.name</field>
+        <field name="binding_model_id" ref="ica_book_shop.model_ica_books"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
