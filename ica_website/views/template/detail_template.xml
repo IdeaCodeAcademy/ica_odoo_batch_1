@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="ica_website.details">
+        <t t-call="website.layout">
+            <div class="container mt-2">
+                <h1>Hello From Details</h1>
+                <t t-esc="partner.name"/>
+            </div>
+        </t>
+    </template>
+</odoo>

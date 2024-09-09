@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="ica_website.info">
+        <t t-call="website.layout">
+            <div class="container mt-2">
+                <h1>Hello From Info</h1>
+        <t t-esc="message"/>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="partner_ids" t-as="partner">
+                    <tr>
+                        <td><t t-esc="partner_index+1"/></td>
+                        <td><t t-esc="partner.name"/></td>
+                        <td><t t-esc="partner.email"/></td>
+                        <td>
+                            <a t-attf-href="/ica/details/#{partner.id}" class="btn btn-primary">Details</a>
+                        </td>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
+            </div>
+        </t>
+    </template>
+</odoo>
